@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
     const card = await api.draw(app.locals.deck_id).then((response) => {
     console.log(response);
     console.log(response['cards']);
-   
+    app.locals.success = true;
     //save card
     app.locals.curr['image'] = response['cards'][0]['image'];
     app.locals.curr['value'] = response['cards'][0]['value'];

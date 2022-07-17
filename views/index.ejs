@@ -36,17 +36,18 @@
                     <img src="/public/default.png">
                 <% } %>
             </div>
+           <% if (typeof cards == 'undefined' || success == true){ %>
             <div class="draw-button-wrapper grid-cell">
                 <a id="drawButton" href="/draw"> Draw </a>
             </div>
+            <% } %>
             <div class="footer grid-cell">
                 <% if (typeof cards !== 'undefined' ) { %>
                     <% if (  success == true) { %>
                         <p class="title"> CARDS REMAINING: <%= cards %> </p>
                     <% } else if (cards == 0 && success == false){ %>
-                        <p class="title"> VALUE MATCHES: <%= matches['value'] %> </p>
-                        <span></span>
-                        <p class="title"> SUIT MATCHES: <%= matches['suit'] %> </p>
+                        <p class="title"> VALUE MATCHES: <%= matches['value'] %> <br> SUIT MATCHES: <%= matches['suit'] %> </p>
+                        
                 <% } } %>
             </div>
         </div>
