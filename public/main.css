@@ -1,0 +1,99 @@
+body * {
+    font-family: "Helvetica Neue", serif;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+}
+
+
+.wrapper {
+    margin: 0 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 1fr 100px auto;
+    grid-gap: 20px;
+    grid-template-areas: "snapMatchTitle snapMatchTitle"
+                         "leftCard rightCard"
+                         "drawButton drawButton"
+                         "footer footer";
+}
+
+.snap-match-title {
+    grid-area: snapMatchTitle;
+}
+
+.left-card {
+    grid-area: leftCard;
+    display: flex;
+}
+
+.right-card {
+    grid-area: rightCard;
+}
+
+.draw-button-wrapper {
+    grid-area: drawButton;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.grid-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#drawButton {
+    font-size: 28px;
+    width: fit-content;
+    height: fit-content;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 40px;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#drawButton:hover {
+    background-color: #0069d9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.left-card img {
+    position: relative;
+    z-index: 10;
+    animation: slideInFromRight 1s ease-in;
+}
+
+.right-card img {
+    position: relative;
+    z-index: 5;
+    animation: drawAnimation 1s ease-in;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(230%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes drawAnimation {
+    0% {
+        opacity: 0.6;
+        scale: 0.7;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}

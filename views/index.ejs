@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Cards
+        </title>
+        <link href="/static/main.css" rel="stylesheet">
+        <!-- <script src="chai.js" type="text/javascript"></script> -->
+    </head>
+    <body>
+        <p class="title">SNAP!</p>
+        <div class="wrapper">
+            <div class="snap-match-title grid-cell">
+                <% if (typeof curr['image'] !== 'undefined' && typeof prev['image'] !== 'undefined') { %>
+                    <% if ( curr['suit'] === prev['suit'] ) { %>
+                        <p class="title is-centered"> SNAP SUIT! </p>
+                    <% } else if ( curr['value'] === prev['value'] ) { %>
+                        <p class="title is-centered"> SNAP VALUE! </p>
+
+                <% } } %>
+            </div>
+            <div class="left-card grid-cell">
+                <% if (typeof prev !== 'undefined') { %>
+                    <img src="<%= prev['image'] %>">
+                <% }else{ %>
+                    <img src="/public/default.png">
+                <% } %>
+            </div>
+            <div class="right-card grid-cell">
+                <% if (typeof curr !== 'undefined') { %>
+                    <img src="<%= curr['image'] %>">
+                <% }else{ %>
+                    <img src="/public/default.png">
+                <% } %>
+            </div>
+            <div class="draw-button-wrapper grid-cell">
+                <a id="drawButton" href="/draw"> Draw </a>
+            </div>
+            <div class="footer grid-cell">
+                <% if (typeof cards !== 'undefined' ) { %>
+                    <% if (  success == true) { %>
+                        <p class="title"> CARDS REMAINING: <%= cards %> </p>
+                    <% } else if (cards == 0 && success == false){ %>
+                        <p class="title"> VALUE MATCHES: <%= matches['value'] %> </p>
+                        <span></span>
+                        <p class="title"> SUIT MATCHES: <%= matches['suit'] %> </p>
+                <% } } %>
+            </div>
+        </div>
+    </body>
+</html>
