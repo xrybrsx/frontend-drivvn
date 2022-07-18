@@ -4,9 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "SET NODE_ENV=dev && node app.js",
-    "test": "jest src",
-    "test:watch": "npm run test -- --watch"
+   
+    "test:watch": "npm run test -- --watch",
+    "start": "node app.js",
+    "test": "mocha tests/test.js "
   },
   "author": "",
   "license": "ISC",
