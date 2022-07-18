@@ -1,27 +1,29 @@
-import "@testing-library/jest-dom/extend-expect";
-import path from "path";
-import ejs from "ejs";
-import { JSDOM } from "jsdom";
-import fs from "fs";
+var assert = require('assert');
+var request = require('request');
 
-const targetFile = path.resolve(__dirname, "./views/index.ejs");
+const { expect } = require('chai');
+var httpMocks = require('node-mocks-http');
+var app = require('../app.js');
+const { default: axios } = require('axios');
+var url = "http://localhost:8080";
 
-describe("[ROOT]", () => {
-    test("should load header section", () => {
-        ejs.renderFile(targetFile, function (err, htmlString) {
-            if (err) {
-                console.log(err);
-            }
-            if (htmlString) {
-                let dom;
-                let container;
-                beforeEach(() => {
-                    dom = new JSDOM(htmlString, {}, { runScripts: "dangerously" });
-                    container = dom.window.document.body;
-                });
-                console.log(dom);
-                expect(getByText(/MY TEXT/i)).toBeInTheDocument();
-            }
-        });
+    describe("Main page working", function() {
+  
+     
+  
+      it("returns status 200", function() {
+        request(url, function(error, response, body) {
+          expect(response.statusCode).to.equal(200);
+       
+        }); });
+     
+      
+      it('should draw cards successfully', () => {
+        request(url+"/draw", function(error, response, body) {
+            console.log(response);
+            expect(response.statusCode).to.equal(200);
+            
+          });
     });
 });
+    
